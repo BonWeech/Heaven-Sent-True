@@ -5,13 +5,10 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject demon;
-    private Vector2 spawnPos = new Vector2(35,43);
-    private float startDelay = 2;
+    private Vector2 spawnPos = new Vector2(110,46);
+    private float startDelay = 2f;
     private int repeatRate = 5;
-    private float leftBoundary;
     
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,16 +17,9 @@ public class SpawnManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (transform.position.x < leftBoundary && gameObject.CompareTag("Demon"))
-        {
-            Destroy(gameObject);
-        }
-        
+    { 
 
-        
     }
-
 
     void SpawnDemon()
     {

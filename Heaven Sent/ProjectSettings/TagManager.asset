@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Demon
+  - Fork
+  - Body
   layers:
   - Default
   - TransparentFX
@@ -42,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: barry
+    uniqueID: 1821657313
     locked: 0
