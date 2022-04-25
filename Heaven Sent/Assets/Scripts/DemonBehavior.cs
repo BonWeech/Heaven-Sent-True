@@ -6,25 +6,28 @@ public class DemonBehavior : MonoBehaviour
 {
     public GameObject Fork;
     public float speed;
-    private int leftBound = -50;
     private Animator demonAnim;
     public CapsuleCollider2D demonCapsule2D;
-    public float timeLeft = 5f;
     public BoxCollider2D demonBox2D;
    
     
 
 
+
+
+
     // Start is called before the first frame update
     void Start()
     {
+        
         demonCapsule2D.GetComponent<CapsuleCollider2D>();
         demonAnim = GetComponent<Animator>();
         demonAnim.SetBool("IsDead", false);
-        
+
         
 
-    }
+
+}
 
     // Update is called once per frame
     void Update()
@@ -32,23 +35,15 @@ public class DemonBehavior : MonoBehaviour
         
         if(!demonAnim.GetBool("IsDead"))
         {
-            transform.Translate(Vector3.left * Time.deltaTime * speed);
+            transform.Translate(Vector2.left * Time.deltaTime * speed);
         }
-        
+
         
 
-
-        if (transform.position.x < leftBound)
+        if(transform.position.y < 20)
         {
             Destroy(gameObject);
         }
-
-        if (transform.position.y < 0)
-        {
-            Destroy(gameObject);
-        }
-        
-         
 
 
             }

@@ -8,6 +8,8 @@ TagManager:
   - Demon
   - Fork
   - Body
+  - Background
+  - DOOR
   layers:
   - Default
   - TransparentFX

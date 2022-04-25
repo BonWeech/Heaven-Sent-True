@@ -4,25 +4,52 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject demon;
-    private Vector2 spawnPos = new Vector2(110,46);
-    private float startDelay = 2f;
+    public GameObject Demon;
+    public GameObject Player;
+    private Vector2 spawnPos;
+    private float startDelay = 1f;
     private int repeatRate = 5;
+    
     
     // Start is called before the first frame update
     void Start()
     {
+
+
+        
         InvokeRepeating("SpawnDemon", startDelay, repeatRate);
     }
 
     // Update is called once per frame
     void Update()
-    { 
+    {
+        spawnPos = new Vector2(Player.transform.position.x + 100f, 43.60306f);
 
+        if(Player.transform.position.x > 123)
+        {
+            repeatRate = 4;
+        }
+
+        if (Player.transform.position.x > 304.5)
+        {
+            repeatRate = 3;
+        }
+
+        if (Player.transform.position.x > 486.8)
+        {
+            repeatRate = 2;
+        }
+
+        if (Player.transform.position.x > 670.8)
+        {
+            CancelInvoke();
+        }
     }
 
     void SpawnDemon()
     {
-        Instantiate(demon, spawnPos, demon.transform.rotation);
+        Instantiate(Demon, spawnPos, Demon.transform.rotation);
     }
-}
+
+    
+    }

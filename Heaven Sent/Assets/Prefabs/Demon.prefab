@@ -182,7 +182,6 @@ MonoBehaviour:
   Fork: {fileID: 598073498393399323}
   speed: 10
   demonCapsule2D: {fileID: 3735163180627242958}
-  timeLeft: 5
   demonBox2D: {fileID: 4530134220517283014}
 --- !u!95 &-658904941897817934
 Animator:
@@ -242,8 +241,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.1147003, y: 0.07126087}
-  m_Size: {x: 4.452112, y: 4.5953794}
+  m_Offset: {x: 20, y: 9.451714}
+  m_Size: {x: 4.4521127, y: 22.156315}
   m_Direction: 0
 --- !u!82 &1001701305588890430
 AudioSource:
