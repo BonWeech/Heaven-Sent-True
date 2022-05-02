@@ -10,6 +10,10 @@ TagManager:
   - Body
   - Background
   - DOOR
+  - Angel
+  - Wing
+  - Punch
+  - Kick
   layers:
   - Default
   - TransparentFX
@@ -17,8 +21,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Demon
+  - Environment
   - 
   - 
   - 

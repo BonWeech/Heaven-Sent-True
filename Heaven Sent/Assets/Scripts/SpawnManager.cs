@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject Demon;
+    public GameObject Enemy;
     public GameObject Player;
     private Vector2 spawnPos;
     private float startDelay = 1f;
@@ -17,13 +17,13 @@ public class SpawnManager : MonoBehaviour
 
 
         
-        InvokeRepeating("SpawnDemon", startDelay, repeatRate);
+        InvokeRepeating("SpawnEnemy", startDelay, repeatRate);
     }
 
     // Update is called once per frame
     void Update()
     {
-        spawnPos = new Vector2(Player.transform.position.x + 100f, 43.60306f);
+        spawnPos = new Vector2(Player.transform.position.x + 100f, Player.transform.position.y + 1f);
 
         if(Player.transform.position.x > 123)
         {
@@ -46,9 +46,9 @@ public class SpawnManager : MonoBehaviour
         }
     }
 
-    void SpawnDemon()
+    void SpawnEnemy()
     {
-        Instantiate(Demon, spawnPos, Demon.transform.rotation);
+        Instantiate(Enemy, spawnPos, Enemy.transform.rotation);
     }
 
     

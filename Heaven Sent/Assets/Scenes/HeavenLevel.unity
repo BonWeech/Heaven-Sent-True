@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 328489924}
   - component: {fileID: 328489923}
+  - component: {fileID: 328489925}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -216,111 +217,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 50, y: 2.829, z: 0}
---- !u!1 &401683175
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 401683176}
-  - component: {fileID: 401683179}
-  - component: {fileID: 401683178}
-  - component: {fileID: 401683177}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &401683176
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401683175}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.422768, y: 10.9, z: -50.5}
-  m_LocalScale: {x: 0.63384545, y: 0.6338455, z: 0.6338455}
-  m_Children: []
-  m_Father: {fileID: 1968749589}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &401683177
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401683175}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 6
---- !u!81 &401683178
+--- !u!81 &328489925
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401683175}
+  m_GameObject: {fileID: 328489922}
   m_Enabled: 1
---- !u!20 &401683179
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401683175}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 30
-  m_Depth: 1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 0
-  m_HDR: 1
-  m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 0
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
 --- !u!1001 &467435844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -513,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636a52ba3a6ddbb4d8c8bab1d23c537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Demon: {fileID: 1338751166270131087, guid: a42c0784a0f3c824682145f56876e89b, type: 3}
+  Enemy: {fileID: 6833193910722530111, guid: daad894deef06a945bbd79e70b38d56e, type: 3}
   Player: {fileID: 1968749581}
 --- !u!4 &840766830
 Transform:
@@ -560,6 +464,10 @@ PrefabInstance:
       propertyPath: DOOR
       value: 
       objectReference: {fileID: 1914450576}
+    - target: {fileID: 6130447782883300363, guid: 0897bac40d559c24bb75e79b55f25c99, type: 3}
+      propertyPath: Angel
+      value: 
+      objectReference: {fileID: 6833193910722530111, guid: daad894deef06a945bbd79e70b38d56e, type: 3}
     - target: {fileID: 6130447782883300363, guid: 0897bac40d559c24bb75e79b55f25c99, type: 3}
       propertyPath: Demon
       value: 
@@ -628,7 +536,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBarry
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 519420029, guid: 0897bac40d559c24bb75e79b55f25c99, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0897bac40d559c24bb75e79b55f25c99, type: 3}
 --- !u!1001 &1293031832
 PrefabInstance:
@@ -1025,11 +934,6 @@ PrefabInstance:
 --- !u!1 &1968749581 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9116477771588036858, guid: 0897bac40d559c24bb75e79b55f25c99, type: 3}
-  m_PrefabInstance: {fileID: 1094854726}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1968749589 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9116477771588036856, guid: 0897bac40d559c24bb75e79b55f25c99, type: 3}
   m_PrefabInstance: {fileID: 1094854726}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2145898712

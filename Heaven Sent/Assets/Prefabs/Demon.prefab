@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2398182422471952092}
   - component: {fileID: 884559132122195163}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fork
   m_TagString: Fork
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 2.3503428, y: 1.8114811, z: 2.5071929}
   m_Children: []
   m_Father: {fileID: 1338751166270131085}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &884559132122195163
 BoxCollider2D:
@@ -71,9 +71,8 @@ GameObject:
   - component: {fileID: 5176803107178161374}
   - component: {fileID: -658904941897817934}
   - component: {fileID: 4530134220517283014}
-  - component: {fileID: 3735163180627242958}
   - component: {fileID: 1001701305588890430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Demon
   m_TagString: Demon
   m_Icon: {fileID: 0}
@@ -91,6 +90,7 @@ Transform:
   m_LocalPosition: {x: 6.6196, y: 43.9, z: 1.0358}
   m_LocalScale: {x: 4.0759645, y: 4.0759645, z: 4.0759645}
   m_Children:
+  - {fileID: 5399083760302081678}
   - {fileID: 2398182422471952092}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Fork: {fileID: 598073498393399323}
+  Body: {fileID: 3701381699430024175}
   speed: 10
-  demonCapsule2D: {fileID: 3735163180627242958}
   demonBox2D: {fileID: 4530134220517283014}
 --- !u!95 &-658904941897817934
 Animator:
@@ -228,22 +228,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3993149, y: 0.6562252}
   m_EdgeRadius: 0
---- !u!70 &3735163180627242958
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338751166270131087}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 20, y: 9.451714}
-  m_Size: {x: 4.4521127, y: 22.156315}
-  m_Direction: 0
 --- !u!82 &1001701305588890430
 AudioSource:
   m_ObjectHideFlags: 0
@@ -340,3 +324,60 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &3701381699430024175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5399083760302081678}
+  - component: {fileID: 1511532836749166047}
+  m_Layer: 6
+  m_Name: Body
+  m_TagString: Demon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5399083760302081678
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3701381699430024175}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2453407, y: 0.2453407, z: 0.2453407}
+  m_Children: []
+  m_Father: {fileID: 1338751166270131085}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1511532836749166047
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3701381699430024175}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 4.1988735, y: -0.5314026}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 17.951073, y: 16.98285}
+  m_EdgeRadius: 0

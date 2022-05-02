@@ -5,10 +5,11 @@ using UnityEngine;
 public class DemonBehavior : MonoBehaviour
 {
     public GameObject Fork;
+    public GameObject Body;
     public float speed;
     private Animator demonAnim;
-    public CapsuleCollider2D demonCapsule2D;
     public BoxCollider2D demonBox2D;
+    
    
     
 
@@ -20,7 +21,7 @@ public class DemonBehavior : MonoBehaviour
     void Start()
     {
         
-        demonCapsule2D.GetComponent<CapsuleCollider2D>();
+       
         demonAnim = GetComponent<Animator>();
         demonAnim.SetBool("IsDead", false);
 
@@ -44,24 +45,31 @@ public class DemonBehavior : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (transform.position.x < -30)
+        {
+            Destroy(gameObject);
+        }
+
+        if(demonAnim.GetBool("IsDead"))
+        {
+            Destroy(demonBox2D);
+            Destroy(Fork);
+            Destroy(Body);
+        }
+
+    }
 
 
-            }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            demonAnim.SetBool("IsDead", true);
+            Debug.Log("hit");
+        }
 
 
-           private void OnCollisionEnter2D(Collision2D collision2D)
-            {
-            
 
-            if (collision2D.gameObject.CompareTag("Player"))
-            {
-                demonAnim.SetBool("IsDead", true);
-                Destroy(demonBox2D);
-                Destroy(Fork);
-                Destroy(demonCapsule2D);
-            }
-            
-        
     }
 
 }
