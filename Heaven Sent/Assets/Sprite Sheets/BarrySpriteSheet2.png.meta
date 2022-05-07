@@ -24,6 +24,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -448,6 +449,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      BarrySpriteSheet2_2: 4535738079455560090
+      BarrySpriteSheet2_3: 7653114829406731329
+      BarrySpriteSheet2_0: -2414805607031893579
+      BarrySpriteSheet2_14: -6260292171855796602
+      BarrySpriteSheet2_1: 6952258687803018437
+      BarrySpriteSheet2_15: 3667516614476525069
+      BarrySpriteSheet2_9: -4628985489337688738
+      BarrySpriteSheet2_7: -8654598886951942139
+      BarrySpriteSheet2_8: 6819168472515212029
+      BarrySpriteSheet2_12: 8878345684807827312
+      BarrySpriteSheet2_6: -1419020387926896219
+      BarrySpriteSheet2_4: 8627406773085782287
+      BarrySpriteSheet2_10: -907620762963312284
+      BarrySpriteSheet2_5: 415700118801726285
+      BarrySpriteSheet2_11: -6558899409947301712
+      BarrySpriteSheet2_13: 5670068021020726287
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

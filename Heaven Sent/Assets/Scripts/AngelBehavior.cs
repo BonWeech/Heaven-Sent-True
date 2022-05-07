@@ -54,6 +54,7 @@ public class AngelBehavior : MonoBehaviour
         {
             Destroy(angelBox2D);
             Destroy(Wing);
+
             Destroy(AngelBody);
         }
 

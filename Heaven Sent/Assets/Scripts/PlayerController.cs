@@ -1,35 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRb2D;
     private BoxCollider2D playerBox2D;
+    public CircleCollider2D playerCircle2D;
+    public CapsuleCollider2D playerCapsule2D;
+    private Animator playerAnim;
+    public AudioClip jumpSound;
+    public AudioClip kickSound;
+    private AudioSource playerAudio;
+    public AudioClip punchSound;
+    public GameObject deathPose;
+    private Vector2 startPos;
     public float horizontalInput;
     public float speed = 50f;
     public float jumpHeight = 10f;
     public float gravityModifier = 1f;
     public bool gameOver = false;
     public bool isOnGround = true;
-    private Animator playerAnim;
-    public AudioClip jumpSound;
-    public AudioClip kickSound;
-    private AudioSource playerAudio;
-    public AudioClip punchSound;
-    public GameObject punchPose;
-    public GameObject kickPose;
-    public GameObject BlueBarry;
-    public GameObject SpawnManager;
-    public GameObject DOOR;
-    public GameObject Demon;
-    public GameObject Body;
-    public GameObject Angel;
-    public GameObject deathPose;
-    public BoxCollider2D demonBox2D;
-    private Vector2 startPos;
-    public PhysicsScene2D heavenLevel;
+    private Vector2 heavenPos = new Vector2((float) -27.8, (float) 493.3);
+
 
 
 
@@ -41,15 +34,18 @@ public class PlayerController : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         playerBox2D = GetComponent<BoxCollider2D>();
         playerAudio = GetComponent<AudioSource>();
+        playerCapsule2D = GetComponent<CapsuleCollider2D>();
+        playerCircle2D = GetComponent<CircleCollider2D>();
+        playerCapsule2D.enabled = true;
+        playerCircle2D.enabled = true;
+        playerBox2D.enabled = true;
         playerAnim.SetBool("IsWalking", false);
         playerAnim.SetBool("IsJumping", false);
         playerAnim.SetBool("IsDead", false);
-        punchPose.SetActive(false);
-        kickPose.SetActive(false);
-        Body.SetActive(true);
         startPos = transform.position;
-        playerBox2D.enabled = true;
         deathPose.SetActive(false);
+
+
 
 
     }
@@ -70,27 +66,25 @@ public class PlayerController : MonoBehaviour
         {
             playerRb2D.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
             playerAudio.PlayOneShot(jumpSound, 1.0f);
-            Body.SetActive(false);
-
+            
         }
 
         else
         {
-            Body.SetActive(true);
+           
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && !gameOver && !playerAnim.GetBool("IsJumping"))
         {
             playerAnim.SetTrigger("Attack_trig");
             playerAudio.PlayOneShot(punchSound, 1.0f);
-            punchPose.SetActive(true);
-            Body.SetActive(false);
+            playerCapsule2D.enabled = false;
+
         }
 
         else
         {
-            punchPose.SetActive(false);
-            Body.SetActive(true);
+            playerCapsule2D.enabled = true;
         }
 
         if (horizontalInput != 0)
@@ -103,21 +97,6 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetBool("IsWalking", false);
         }
 
-        if (transform.position.y > 43.2)
-        {
-            playerAnim.SetBool("IsJumping", true);
-            playerAnim.SetBool("IsWalking", false);
-            isOnGround = false;
-            playerBox2D.enabled = false;
-        }
-
-        else
-        {
-
-            playerAnim.SetBool("IsJumping", false);
-            isOnGround = true;
-            playerBox2D.enabled = true;
-        }
 
         if (transform.position.y > 93)
         {
@@ -134,15 +113,11 @@ public class PlayerController : MonoBehaviour
 
             playerAnim.SetTrigger("Kick_trig");
             playerAudio.PlayOneShot(kickSound, 1.0f);
-            kickPose.SetActive(true);
-            Body.SetActive(false);
-            playerBox2D.enabled = false;
         }
 
         else
         {
-            kickPose.SetActive(false);
-            Body.SetActive(true);
+          
         }
 
 
@@ -151,22 +126,15 @@ public class PlayerController : MonoBehaviour
             
             playerAnim.SetBool("IsWalking", false);
             playerAnim.SetBool("IsJumping", false);
-            punchPose.SetActive(false);
-            kickPose.SetActive(false);
-            Body.SetActive(false);
+            playerCapsule2D.enabled = false;
             playerBox2D.enabled = false;
             deathPose.SetActive(true);
-            
         }
 
         if (gameOver == true)
         {
             Debug.Log("Game Over!");
-            Destroy(SpawnManager);
             Destroy(playerAudio);
-
-
-
         }
 
 
@@ -175,6 +143,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+
+        while (other.gameObject.CompareTag("Ground"))
+        {
+            playerAnim.SetBool("IsJumping", false);
+            isOnGround = true;
+            playerBox2D.enabled = true;
+            playerCapsule2D.enabled = true;
+        }
+
         if (other.gameObject.CompareTag("Fork"))
         {
             playerAnim.SetBool("IsDead", true);
@@ -183,9 +160,9 @@ public class PlayerController : MonoBehaviour
 
         if (other.gameObject.CompareTag("DOOR"))
         {
-            SceneManager.LoadScene("HeavenLevel");
             Debug.Log("Door Detected");
             playerAnim.SetBool("IsDead", false);
+            transform.position = heavenPos;
         }
 
         if (other.gameObject.CompareTag("Wing"))

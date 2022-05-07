@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/HellLevel.unity
+    path: Assets/Scenes/Full Game.unity
     guid: 2043af3fc49cb7e47b6980982d22677b
   - enabled: 1
     path: Assets/Scenes/HeavenLevel.unity

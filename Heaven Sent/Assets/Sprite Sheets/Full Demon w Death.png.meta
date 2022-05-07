@@ -42,6 +42,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -256,6 +257,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Full Demon w Death_5: -4951412252402306513
+      Full Demon w Death_3: -960433595727712300
+      Full Demon w Death_2: 103181537763448298
+      Full Demon w Death_4: -4978980213203119326
+      Full Demon w Death_1: 6229030173080687021
+      Full Demon w Death_0: 2982488475873546145
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
