@@ -456,6 +456,14 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2617491925439198849, guid: 0897bac40d559c24bb75e79b55f25c99, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2617491925439198849, guid: 0897bac40d559c24bb75e79b55f25c99, type: 3}
+      propertyPath: m_GravityScale
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5844159359603619422, guid: 0897bac40d559c24bb75e79b55f25c99, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -478,7 +486,7 @@ PrefabInstance:
       objectReference: {fileID: 1968749581}
     - target: {fileID: 6130447782883300363, guid: 0897bac40d559c24bb75e79b55f25c99, type: 3}
       propertyPath: jumpHeight
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 6130447782883300363, guid: 0897bac40d559c24bb75e79b55f25c99, type: 3}
       propertyPath: SpawnManager
