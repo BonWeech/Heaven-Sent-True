@@ -49,6 +49,10 @@ public class DemonBehavior : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (transform.position.y < 43)
+        {
+            transform.position = new Vector2(transform.position.x, 43);
+        }
 
         if(demonAnim.GetBool("IsDead"))
         {
@@ -56,17 +60,19 @@ public class DemonBehavior : MonoBehaviour
             Destroy(Fork);
             Destroy(Body);
         }
+        
 
     }
 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Punch"))
+        if (other.gameObject.name == "BarryAttack")
         {
             demonAnim.SetBool("IsDead", true);
             Debug.Log("hit");
         }
+        
 
 
 
