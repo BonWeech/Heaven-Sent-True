@@ -9,9 +9,12 @@ public class DemonBehavior : MonoBehaviour
     public float speed;
     private Animator demonAnim;
     public BoxCollider2D demonBox2D;
-    
-   
-    
+    public AudioSource demonSnort;
+    public AudioSource demonDeath;
+    public AudioClip DeathSound;
+
+
+
 
 
 
@@ -24,10 +27,7 @@ public class DemonBehavior : MonoBehaviour
        
         demonAnim = GetComponent<Animator>();
         demonAnim.SetBool("IsDead", false);
-
         
-
-
 }
 
     // Update is called once per frame
@@ -59,6 +59,8 @@ public class DemonBehavior : MonoBehaviour
             Destroy(demonBox2D);
             Destroy(Fork);
             Destroy(Body);
+            Destroy(demonSnort);
+            
         }
         
 
@@ -70,6 +72,7 @@ public class DemonBehavior : MonoBehaviour
         if (other.gameObject.name == "BarryAttack")
         {
             demonAnim.SetBool("IsDead", true);
+            demonDeath.PlayOneShot(DeathSound, 1f);
             Debug.Log("hit");
         }
         

@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Full Game.unity
+    path: Assets/Scenes/Title.unity
+    guid: 26a020b44ee237b4e8607d6a55a78f38
+  - enabled: 1
+    path: Assets/Scenes/Hell.unity
     guid: 2043af3fc49cb7e47b6980982d22677b
   - enabled: 1
-    path: Assets/Scenes/HeavenLevel.unity
-    guid: 0bb12c2f8f3fd9b469a0e16725e03073
+    path: Assets/Scenes/Heaven.unity
+    guid: cf3bcaa9ce9baef47b150a3aa7412238
   m_configObjects: {}

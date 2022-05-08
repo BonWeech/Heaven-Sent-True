@@ -1,29 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject SpawnManager;
     private Rigidbody2D playerRb2D;
-   
     public GameObject Body;
     public GameObject Attack;
     private Animator playerAnim;
     public AudioClip jumpSound;
     public AudioClip kickSound;
+    public AudioClip deathSound;
     private AudioSource playerAudio;
     public AudioClip punchSound;
+    public BoxCollider2D playerBox2D;
+    public Camera PlayerCam;
     public GameObject deathPose;
+    public GameObject DeathScreen;
     public float horizontalInput;
     public float speed;
     public float jumpHeight;
-    public float gravityModifier;
     public bool gameOver;
-    public bool isOnGround;
-    private Vector2 heavenPos;
-    public BoxCollider2D playerBox2D;
-    public float animationTime;
-
+    private bool isOnGround;
+    private float Timer;
+    public float Seconds;
+    public string Heaven;
 
 
 
@@ -41,29 +44,16 @@ public class PlayerController : MonoBehaviour
         Body.SetActive(true);
         isOnGround = true;
         gameOver = false;
-        gravityModifier = 1f;
-        jumpHeight = 10f;
-        speed = 50f;
-        heavenPos = new Vector2((float)-27.8, (float)493.3);
-        animationTime = 2f;
-        
-       
-
-
-
-
+        Timer = Seconds;
+        DeathScreen.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         //movement key binding
         if (!gameOver)
         {
-
-            Attack.SetActive(false);
             horizontalInput = Input.GetAxis("Horizontal");
             transform.Translate(Vector2.right * horizontalInput * Time.deltaTime * speed);
 
@@ -78,15 +68,14 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKeyUp(KeyCode.W) && isOnGround)
             {
-                playerRb2D.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
-                playerAudio.PlayOneShot(jumpSound, 1.0f);
+                JumpCycle();
             }
-            if(transform.position.y >= 45)
+            if (transform.position.y >= 44)
             {
                 isOnGround = false;
                 playerAnim.SetBool("IsJumping", true);
             }
-            if (transform.position.y <= 45)
+            if (transform.position.y <= 44)
             {
                 isOnGround = true;
                 playerAnim.SetBool("IsJumping", false);
@@ -102,74 +91,91 @@ public class PlayerController : MonoBehaviour
                 playerAnim.SetBool("IsWalking", false);
             }
 
+            //Attacks
+            if (Input.GetKey(KeyCode.Space) && Timer > 0)
+            {
+                Attack.SetActive(true);
+                Timer -= Time.deltaTime;
+                Physics2D.IgnoreLayerCollision(8, 8);
+            }
+
+            else
+            {
+                Attack.SetActive(false);
+                Timer = Seconds;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && playerAnim.GetBool("IsJumping"))
+            {
+                KickCycle();
+            }
+            if (Input.GetKeyDown(KeyCode.Space) && !playerAnim.GetBool("IsJumping"))
+            {
+                PunchCycle();
+            }
         }
         
-        //Punch Attack
-        if (Input.GetKey(KeyCode.Space) && !playerAnim.GetBool("IsJumping"))
-        {
-            playerAnim.SetTrigger("Attack_trig");
-            Attack.SetActive(true);
-        }
-        else
-        {
-            Attack.SetActive(false);
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && !playerAnim.GetBool("IsJumping"))
-        {
-            playerAudio.PlayOneShot(punchSound, 1.0f);
-        }
-        //Kick Attack
-        if (Input.GetKey(KeyCode.Space) && playerAnim.GetBool("IsJumping"))
-        {
-            playerAnim.SetTrigger("Kick_trig");
-            Attack.SetActive(true);
-        }
-        else
-        {
-            Attack.SetActive(false);
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && playerAnim.GetBool("IsJumping"))
-        {
-            playerAudio.PlayOneShot(kickSound, 1.0f);
-        }
-
-        //Game Over
-        if (gameOver == true)
-        {
-            Debug.Log("Game Over!");
-            Destroy(playerAudio);
-            Destroy(playerBox2D);
-            playerAnim.SetBool("IsDead", true);
-            playerAnim.SetBool("IsWalking", false);
-            playerAnim.SetBool("IsJumping", false);
-            Attack.SetActive(false);
-            Body.SetActive(false);
-            deathPose.SetActive(true);
-            Physics2D.IgnoreLayerCollision(0, 6);
-            
-            
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
 
         //Death Animation to Demon
-        if (other.gameObject.CompareTag("Fork"))
+        if (other.gameObject.CompareTag("Fork") && !gameOver)
         {
-            gameOver = true;
+            GameOver();
+        }
+        //Death to Angels
+        if (other.gameObject.CompareTag("Wing") && !gameOver)
+        {
+            GameOver();
         }
         //Teleport
-        if (other.gameObject.CompareTag("DOOR"))
+        if (other.gameObject.CompareTag("DOOR") && !gameOver)
         {
             Debug.Log("Door Detected");
             playerAnim.SetBool("IsDead", false);
-            transform.position = heavenPos;
+            UnityEngine.SceneManagement.SceneManager.LoadScene(Heaven);
         }
-        //Death to Angels
-        if (other.gameObject.CompareTag("Wing"))
-        {
-            gameOver = true;
-        }
+    }
+
+    //Punching
+    private void PunchCycle()
+    {
+        playerAudio.PlayOneShot(punchSound, 1.0f);
+        playerAnim.SetTrigger("Attack_trig");
+    }
+
+    //Kicking
+    private void KickCycle()
+    {
+        playerAudio.PlayOneShot(kickSound, 1.0f);
+        playerAnim.SetTrigger("Kick_trig");
+    }
+
+    //Jump
+    private void JumpCycle()
+    {
+        playerRb2D.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
+        playerAudio.PlayOneShot(jumpSound, 1.0f);
+    }
+
+    //Game Over
+    private void GameOver()
+    {
+        Debug.Log("Game Over!");
+        playerAudio.PlayOneShot(deathSound);
+        gameOver = true;
+        Destroy(SpawnManager);
+        Destroy(playerBox2D);
+        playerAnim.SetBool("IsDead", true);
+        playerAnim.SetBool("IsWalking", false);
+        playerAnim.SetBool("IsJumping", false);
+        Attack.SetActive(false);
+        Body.SetActive(false);
+        deathPose.SetActive(true);
+        Physics2D.IgnoreLayerCollision(0, 6);
+        DeathScreen.SetActive(true);
     }
 }

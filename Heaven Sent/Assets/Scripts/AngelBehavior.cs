@@ -8,8 +8,9 @@ public class AngelBehavior : MonoBehaviour
     public GameObject AngelBody;
     public float AngelSpeed;
     private Animator angelAnim;
-    public BoxCollider2D angelBox2D;
-
+    public Rigidbody2D angelRb2D;
+    public AudioSource angelDeath;
+    public AudioClip DeathSound;
 
 
 
@@ -21,12 +22,9 @@ public class AngelBehavior : MonoBehaviour
     void Start()
     {
 
-
+        angelRb2D = GetComponent<Rigidbody2D>();
         angelAnim = GetComponent<Animator>();
         angelAnim.SetBool("IsDead", false);
-
-
-
 
     }
 
@@ -52,9 +50,7 @@ public class AngelBehavior : MonoBehaviour
 
         if (angelAnim.GetBool("IsDead"))
         {
-            Destroy(angelBox2D);
             Destroy(Wing);
-
             Destroy(AngelBody);
         }
 
@@ -63,9 +59,11 @@ public class AngelBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.name == "BarryAttack")
         {
             angelAnim.SetBool("IsDead", true);
+            angelRb2D.constraints = RigidbodyConstraints2D.None;
+            angelDeath.PlayOneShot(DeathSound, 1f);
             Debug.Log("hit");
         }
 

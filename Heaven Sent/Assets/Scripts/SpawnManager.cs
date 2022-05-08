@@ -14,9 +14,6 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
-        
         InvokeRepeating("SpawnEnemy", startDelay, repeatRate);
     }
 
@@ -27,17 +24,17 @@ public class SpawnManager : MonoBehaviour
 
         if(Player.transform.position.x > 123)
         {
-            repeatRate = 4;
+            repeatRate = 3;
         }
 
         if (Player.transform.position.x > 304.5)
         {
-            repeatRate = 3;
+            repeatRate = 2;
         }
 
         if (Player.transform.position.x > 486.8)
         {
-            repeatRate = 2;
+            repeatRate = 1;
         }
 
         if (Player.transform.position.x > 670.8)
