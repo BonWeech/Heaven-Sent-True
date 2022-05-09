@@ -11,13 +11,11 @@ public class HeavenSpawn : MonoBehaviour
     private int repeatRate;
     private float heightRange;
    
-
-
     // Start is called before the first frame update
     void Start()
     {
-        repeatRate = Random.Range(1, 5);
 
+        repeatRate = Random.Range(4, 7);
         InvokeRepeating("SpawnEnemy", startDelay, repeatRate);
     }
 
@@ -28,17 +26,12 @@ public class HeavenSpawn : MonoBehaviour
 
         if (Player.transform.position.x > 123)
         {
-            repeatRate = Random.Range(1, 4);
+            repeatRate = Random.Range(3, 5);
         }
 
         if (Player.transform.position.x > 304.5)
         {
-            repeatRate = Random.Range(1, 3);
-        }
-
-        if (Player.transform.position.x > 486.8)
-        {
-            repeatRate = Random.Range(1, 2); ;
+            repeatRate = 2;
         }
 
         if (Player.transform.position.x > 670.8)
@@ -47,10 +40,11 @@ public class HeavenSpawn : MonoBehaviour
         }
     }
 
-    void SpawnEnemy()
+    public void SpawnEnemy()
     {
         Instantiate(Enemy, spawnPos, Enemy.transform.rotation);
-        heightRange = Random.Range(44, 60);
+        heightRange = Random.Range(44, 70);
+        
     }
 
 

@@ -192,9 +192,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -160264349
+  m_SortingLayer: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -6987279634511322176, guid: 62d64c3071e19094da3fcd82e9d135a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -262,7 +262,6 @@ MonoBehaviour:
   Wing: {fileID: 2555835565313487647}
   AngelBody: {fileID: 2973886195225275020}
   AngelSpeed: 10
-  angelBox2D: {fileID: 0}
   angelRb2D: {fileID: 6833193910722530097}
   angelDeath: {fileID: 2497045326224434412}
   DeathSound: {fileID: 8300000, guid: 022b8dee7285e2346aee2df28f74564a, type: 3}

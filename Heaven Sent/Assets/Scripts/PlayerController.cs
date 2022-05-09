@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     private float Timer;
     public float Seconds;
     public string Heaven;
+    public GameObject WonGame;
+    public AudioClip victoryNoise;
+    public AudioClip barryHappy;
 
 
 
@@ -46,6 +49,8 @@ public class PlayerController : MonoBehaviour
         gameOver = false;
         Timer = Seconds;
         DeathScreen.SetActive(false);
+        WonGame.SetActive(false);
+        playerAnim.SetBool("WonGame", false);
     }
 
     // Update is called once per frame
@@ -134,9 +139,19 @@ public class PlayerController : MonoBehaviour
         //Teleport
         if (other.gameObject.CompareTag("DOOR") && !gameOver)
         {
-            Debug.Log("Door Detected");
+           
             playerAnim.SetBool("IsDead", false);
             UnityEngine.SceneManagement.SceneManager.LoadScene(Heaven);
+        }
+        //Victory
+        if (other.gameObject.CompareTag("HeavenDoor") && !gameOver)
+        {
+            playerAnim.SetBool("WonGame", true);
+            WonGame.SetActive(true);
+            gameOver = true;
+            playerAudio.PlayOneShot(victoryNoise, 1.0f);
+            playerAudio.PlayOneShot(barryHappy, 1.0f);
+            Destroy(SpawnManager);
         }
     }
 
@@ -164,7 +179,6 @@ public class PlayerController : MonoBehaviour
     //Game Over
     private void GameOver()
     {
-        Debug.Log("Game Over!");
         playerAudio.PlayOneShot(deathSound);
         gameOver = true;
         Destroy(SpawnManager);

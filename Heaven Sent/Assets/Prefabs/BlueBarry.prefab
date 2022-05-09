@@ -291,21 +291,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bedba7e37067ad4299b28e0b7b0b9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Heaven: Heaven
+  SpawnManager: {fileID: 0}
   Body: {fileID: 3710620035709059279}
   Attack: {fileID: 4859730033543191996}
   jumpSound: {fileID: 8300000, guid: 3f5fd62a1db4dd540b87f9d12330d73e, type: 3}
   kickSound: {fileID: 8300000, guid: e88e2b7e367ce1e4296bc95a8c76e88e, type: 3}
   deathSound: {fileID: 8300000, guid: d4d28605224f0274983dcfe838a6a407, type: 3}
   punchSound: {fileID: 8300000, guid: 5fe53c8ce40579d4095c5c0a483c5a86, type: 3}
+  playerBox2D: {fileID: 385630518}
+  PlayerCam: {fileID: 1329560730}
   deathPose: {fileID: 5270135357890823867}
+  DeathScreen: {fileID: 0}
   horizontalInput: 0
   speed: 20
   jumpHeight: 200
   gameOver: 0
   Seconds: 2
-  playerBox2D: {fileID: 385630518}
-  PlayerCam: {fileID: 0}
+  Heaven: Heaven
 --- !u!95 &104562988376880774
 Animator:
   serializedVersion: 4
@@ -364,9 +366,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -160264349
+  m_SortingLayer: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: -5337079041496152106, guid: 6b40519382c919e4f81c0ac271c13acd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
