@@ -44,7 +44,6 @@ public class HeavenSpawn : MonoBehaviour
     {
         Instantiate(Enemy, spawnPos, Enemy.transform.rotation);
         heightRange = Random.Range(44, 70);
-        
     }
 
 

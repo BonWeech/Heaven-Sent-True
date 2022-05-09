@@ -32,15 +32,11 @@ public class DemonBehavior : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        
+    { 
         if(!demonAnim.GetBool("IsDead"))
         {
             transform.Translate(Vector2.left * Time.deltaTime * speed);
         }
-
-        
-
         if(transform.position.y < 20)
         {
             Destroy(gameObject);
@@ -62,10 +58,7 @@ public class DemonBehavior : MonoBehaviour
             Destroy(demonSnort);
             
         }
-        
-
     }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -75,10 +68,6 @@ public class DemonBehavior : MonoBehaviour
             demonDeath.PlayOneShot(DeathSound, 1f);
             Debug.Log("hit");
         }
-        
-
-
-
     }
 
 }

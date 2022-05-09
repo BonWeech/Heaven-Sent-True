@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329560727}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.422768, y: 10.899999, z: -50.5}
+  m_LocalPosition: {x: 23.422768, y: 2.1, z: -50.5}
   m_LocalScale: {x: 0.633847, y: 0.633847, z: 0.633847}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -308,6 +308,9 @@ MonoBehaviour:
   gameOver: 0
   Seconds: 2
   Heaven: Heaven
+  WonGame: {fileID: 0}
+  victoryNoise: {fileID: 8300000, guid: 85b578608f0aa014994777f3f9e2936c, type: 3}
+  barryHappy: {fileID: 8300000, guid: 20e2ff736aad6ba499d7d887628dd984, type: 3}
 --- !u!95 &104562988376880774
 Animator:
   serializedVersion: 4
@@ -368,7 +371,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -160264349
   m_SortingLayer: 2
-  m_SortingOrder: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: -5337079041496152106, guid: 6b40519382c919e4f81c0ac271c13acd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
